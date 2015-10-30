@@ -1,6 +1,6 @@
 
 <?php if (isset($reporte)): ?>
-<pre><?php var_dump($reporte) ?></pre>
+
 	<table class="table table-condensed table-hover ">
 		<tr>
 			<thead>

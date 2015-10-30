@@ -32,7 +32,7 @@
 			
 			
 		<?php else: ?>
-		<tr style="background:#abb padding-bottom:3mm;">
+		<tr style="background:#000 padding-bottom:3mm;">
 			<?php if (empty($row)) {
 			 for ($i=0; $i < 8; $i++) { 
 				echo '<td></td>';

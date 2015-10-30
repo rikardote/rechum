@@ -190,7 +190,8 @@ class Qnas extends My_Controller {
   }
   public function reporte_pdf()
 {
-$pdf = $this->m_pdf->load();
+	$params = "('', 'Letter', 0, '', 12.7, 12.7, 14, 12.7, 8, 8)";
+$pdf = $this->m_pdf->load($params);
 		$user_id    = $this->tank_auth->get_user_id();
 		if ($this->uri->segment(3) != '') {
 			$qna_id = $this->uri->segment(3);
@@ -224,7 +225,7 @@ $pdf = $this->m_pdf->load();
 	$pdf->WriteHTML($html);
 	 
 	//download it.
-	$pdf->Output($pdfFilePath, "I");
+	$pdf->Output($pdfFilePath, "D");
  
 }
 		

@@ -13,10 +13,10 @@ class M_pdf {
          
         if ($params == NULL)
         {
-            $param = "('', 'Letter', '', '', 20, 20, 25, 25, 18, 8";         
+            $param = "('', 'Letter', 0, '', 12.7, 12.7, 14, 12.7, 8, 8)";         
         }
           
-        return new mPDF($param);
+        return new mPDF('utf-8', 'Letter');
     }
 }
  
