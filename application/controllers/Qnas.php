@@ -210,14 +210,15 @@ $pdf = $this->m_pdf->load($params);
 	$html=$this->load->view('qnas/report_pdf', $data, true);
 	
 	//this the the PDF filename that user will get to download
-	$pdfFilePath = "output_pdf_name.pdf";
+	$data['reporte2'] = $this->captura_model->get_report2($qna_id, $centros);
 	$pdf->setAutoTopMargin = 'stretch';
   	$pdf->setAutoBottomMargin = 'stretch';
-  	$data['reporte2'] = $this->captura_model->get_report2($qna_id, $centros);
+  	
+  	$pdfFilePath = $data['reporte2']->qna_mes.'-'.$data['reporte2']->qna_year.'-'.$data['reporte2']->descripcion.'.pdf';
   	
   	$header = $this->load->view('qnas/header', $data, true);
 	$pdf->setHTMLHeader($header);
-  	$pdf->SetFooter('Document Title|{DATE j-m-Y} |Hoja {PAGENO} de {nb}');
+  	$pdf->SetFooter($data['reporte2']->descripcion.'|{DATE j-m-Y} |Hoja {PAGENO} de {nb}');
 	//load mPDF library
 	$pdf->SetDisplayMode('fullpage');
 	
