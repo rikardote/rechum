@@ -17,8 +17,8 @@
 			</tr>
 			
 	<?php $atributo_boton_modificar = array('data-toggle' => 'modal', 'data-target' => '.bs-example-modal-sm', 'class' => 'btn btn-warning btn-sm glyphicon glyphicon-pencil');?>
-	<?php $atributo_boton_reports = array('class' => 'btn btn-primary btn-sm glyphicon glyphicon-list-alt');?>				
-	<?php $atributo_boton_report_pdf = array('class' => 'btn btn-default btn-sm fa fa-file-pdf-o');?>				
+	<?php $atributo_boton_reports = array('class' => 'btn btn-primary btn-sm fa fa-list');?>				
+	<?php $atributo_boton_report_pdf = array('class' => 'btn btn-danger btn-sm fa fa-file-pdf-o fa-2');?>				
 	<?php	foreach ($qnas as $qna): ?>
 			<tr>
 				<td><b><?php echo $qna->qna_mes.'/'.$qna->qna_year;?></b></td>
