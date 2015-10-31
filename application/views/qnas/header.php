@@ -27,12 +27,12 @@
 		</table>
 
 		<tr>
-			<td><span style="font-size:16px;">CLAVE DE ADSCRIPCION: <strong><?=$reporte2->adscripcion?></strong></span></td>
-			<td align='right'><span style="font-size:16px;">DESCRIPCION: <strong><?=$reporte2->descripcion?></strong></span></td>
+			<p><td><span style="font-size:16px;">CLAVE DE ADSCRIPCION: <strong><?=$reporte2->adscripcion?></strong></span></td></p>
+			<p></p><td align='right'><span style="font-size:16px;">DESCRIPCION: <strong><?=$reporte2->descripcion?></strong></span></td></p>
 		</tr>
 		<tr>
-			<td><span style="font-size:16px;">QNA: <strong><?php echo $reporte2->qna_mes.'/'.$reporte2->qna_year.' - '.$reporte2->qna_descripcion;?>  </strong></span></td>
-			<td align='right'><span style="font-size:16px;">A&Ntilde;O: <strong><?=$reporte2->qna_year?></strong></span></td>
+			<p><td><span style="font-size:16px;">QNA: <strong><?php echo $reporte2->qna_mes.'/'.$reporte2->qna_year.' - '.$reporte2->qna_descripcion;?>  </strong></span></td></p>
+			<p><td align='right'><span style="font-size:16px;">A&Ntilde;O: <strong><?=$reporte2->qna_year?></strong></span></td></p>
 		</tr>
 	</tbody>
 </table>

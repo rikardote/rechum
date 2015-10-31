@@ -1,1 +1,1 @@
-<pre><?php var_dump($reporte); ?></pre>
+Esto es un test y nada mas
