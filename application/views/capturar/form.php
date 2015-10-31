@@ -61,7 +61,13 @@
 			);
 		?>
 		<?php	echo form_label('Fecha inicial', 'fecha_inicial'); ?>
-		<?php	echo form_input('fecha_inicial','' ,$data); 	?> 
+		<div class="input-group">
+				<?php	echo form_input('fecha_inicial','' ,$data); ?>
+				<span class="input-group-addon "><i class="fa fa-calendar"></i></span> 
+					 
+		</div>
+		
+		
 	</div>
 	<div class="form-group" >
 		<?php 
@@ -74,7 +80,11 @@
 			);
 		?>
 		<?php	echo form_label('Fecha final', 'fecha_final');?>
-		<?php	echo form_input('fecha_final','' ,$data); ?>
+		<div class="input-group">
+				<?php	echo form_input('fecha_final','' ,$data); ?>
+				<span class="input-group-addon "><i class="fa fa-calendar"></i></span> 
+					 
+		</div>
 	</div>
 	<div class="form-group">
 		<?php	echo form_label('Periodo', 'periodo');?>
