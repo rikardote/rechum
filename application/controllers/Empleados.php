@@ -16,7 +16,7 @@ class Empleados extends MY_Controller {
 	public function index()
 	{			
 		$data['user_id']    = $this->tank_auth->get_user_id();
-        $this->load->model('empleado_model');
+        
         $username   = $this->tank_auth->get_username();
         $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
 		$data['is_admin']   = $this->tank_auth->is_admin();
@@ -29,7 +29,7 @@ class Empleados extends MY_Controller {
 	}
 	public function show($id) {
 		$data['user_id']    = $this->tank_auth->get_user_id();
-        $this->load->model('empleado_model');
+        $this->load->model('pases_model');
         $username   = $this->tank_auth->get_username();
         $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
 	    $data['is_admin']   = $this->tank_auth->is_admin();
@@ -37,6 +37,7 @@ class Empleados extends MY_Controller {
 			$id = $this->uri->segment(3);
 		}
 		
+		$data['pases'] = $this->pases_model->get_pases($id);
 		$data['empleado'] = $this->empleado_model->get_empleado_join($id);
 		$data['options'] = listData('adscripciones','id','adscripcion' ,'descripcion','ASC',' - ');
 		$data['index'] = "empleados/show";
@@ -190,7 +191,7 @@ class Empleados extends MY_Controller {
     }
     public function search(){
     	$data['user_id']    = $this->tank_auth->get_user_id();
-        $this->load->model('empleado_model');
+       
         $username   = $this->tank_auth->get_username();
         $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
         $data['is_admin']   = $this->tank_auth->is_admin();
@@ -208,6 +209,7 @@ class Empleados extends MY_Controller {
 		$this->load->view('layouts/index', $data);
 		
 	}
+	
 	
 
 }

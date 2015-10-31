@@ -67,9 +67,38 @@
                 ac turpis egestas.</p>
         </div>
         <div class="tab-pane" id="tab_c">
-            <h4>Pases de salida</h4>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-                ac turpis egestas.</p>
+           <div class="container">
+           	<div class="row">
+            <div class="col-md-3">
+            	<?php form_open('url', ''); ?>
+				<?php echo form_label('What is your Name', 'username'); ?>
+            	<?php echo form_input('name', 'value', "class='form-control'"); ?>
+				<?php echo form_submit('name', 'value',"class='btn btn-primary form-control'"); ?>
+            	<?php form_close(); ?>
+            </div>
+            <div class="col-md-7">
+	            <table class="table table-striped table-condensed">
+	            	<thead>
+	            		<td align="center"><strong>Qna</strong></td>
+	            		<td align="center"><strong>Motivo</strong></td>
+	            		<td align="center"><strong>Salida</strong></td>
+	            		<td align="center"><strong>Fecha de salida</strong></td>
+	            		
+	            	</thead>
+	            	<tbody>
+	            		<?php foreach ($pases as $pase): ?>
+	            		<td align="left"><?php echo $pase->qna_mes.'/'.$pase->qna_year.' - '.$pase->qna_descripcion;?></td>
+	            		<td align="left"><?=$pase->motivo?></td>
+	            		<td align="center"><?=$pase->horario?></td>
+	            		<td align="center"><?=fecha_dma($pase->fecha_salida)?></td>
+	            	</tbody>
+	            	<?php endforeach ?>
+		
+	            </table>
+	            
+            </div>
+        </div>
+        </div>
         </div>
         <div class="tab-pane" id="tab_d">
             <h4>Pane D</h4>
