@@ -13,6 +13,9 @@
 				<td><b>Descripcion</b></td>
 				<td><b>Reporte</b></td>
 				<td><b>PDF</b></td>
+				<?php if ($is_admin): ?>
+				<td><b>Acciones</b></td>
+				<?php endif ?>
 			</thead>	
 			</tr>
 			
