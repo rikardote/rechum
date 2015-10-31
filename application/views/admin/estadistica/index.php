@@ -19,16 +19,16 @@
 			        'name'  => 'fecha_inicial',
 			        'id'    => 'fecha_inicial',
 			        'class'    => 'form-control',
-			        'placeholder' => 'Fecha Inicial'
+			        'placeholder' => 'Fecha Inicial',
+			        
 			        
 			        
 				);
 				?>
 				
-				<div class="col-xs-3">
-					<span class="glyphicon glyphicon-calendar">
-					</span>                   
+				<div class="col-xs-3 input-group">
 					<?php	echo form_input('fecha_inicial','' ,$data); ?>
+					<span class="input-group-addon "><i class="fa fa-calendar"></i></span> 
 					 
 				</div>
 				<?php 
@@ -42,8 +42,10 @@
 				);
 				?>
 				
-				<div class="col-xs-3">
+				<div class="col-xs-3 input-group">
 					<?php	echo form_input('fecha_final','' ,$data); ?>
+					<span class="input-group-addon "><i class="fa fa-calendar"></i></span> 
+					 
 				</div>
 				<?php echo form_submit('name', 'Ok','class = "btn btn-primary  round btn-xs "'); ?>
 				
@@ -73,10 +75,11 @@
 		        
 			);
 			?>
-			<div class="col-xs-3">
-				
-				<?php	echo form_input('fecha_inicial2','' ,$data); ?>
-			</div>
+				<div class="col-xs-3 input-group">
+					<?php	echo form_input('fecha_inicial2','' ,$data); ?>
+					<span class="input-group-addon "><i class="fa fa-calendar"></i></span> 
+					 
+				</div>
 			<?php 
 				$data = array(
 		        
@@ -87,10 +90,11 @@
 		        
 			);
 			?>
-			<div class="col-xs-3">
-				
-				<?php	echo form_input('fecha_final2','' ,$data); ?>
-			</div>
+				<div class="col-xs-3 input-group">
+					<?php	echo form_input('fecha_final2','' ,$data); ?>
+					<span class="input-group-addon "><i class="fa fa-calendar"></i></span> 
+					 
+				</div>
 			<?php echo form_submit('name', 'Ok','class = "btn btn-primary  round btn-xs "'); ?>
 			<?php echo form_close(); ?>
 			</div>
@@ -120,10 +124,11 @@
 			);
 			?>
 			
-			<div class="col-xs-3">
-				
-				<?php	echo form_input('fecha_inicial3','' ,$data); ?>
-			</div>
+				<div class="col-xs-3 input-group">
+					<?php	echo form_input('fecha_inicial3','' ,$data); ?>
+					<span class="input-group-addon "><i class="fa fa-calendar"></i></span> 
+					 
+				</div>
 			
 			<?php 
 				$data = array(
@@ -136,9 +141,11 @@
 			);
 			?>
 			
-			<div class="col-xs-3">
-				<?php	echo form_input('fecha_final3','' ,$data); ?>
-			</div>
+				<div class="col-xs-3 input-group">
+					<?php	echo form_input('fecha_final3','' ,$data); ?>
+					<span class="input-group-addon "><i class="fa fa-calendar"></i></span> 
+					 
+				</div>
 			<?php echo form_submit('name', 'Ok','class = "btn btn-primary  round btn-xs "'); ?>
 			<?php echo form_close(); ?>
 			</div>
