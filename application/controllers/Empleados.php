@@ -36,16 +36,17 @@ class Empleados extends MY_Controller {
 		if ($this->uri->segment(3) != '') {
 			$id = $this->uri->segment(3);
 		}
-		
+		$data['empleado_id'] = $id;
 		$data['pases'] = $this->pases_model->get_pases($id);
 		$data['empleado'] = $this->empleado_model->get_empleado_join($id);
-		$data['options'] = listData('adscripciones','id','adscripcion' ,'descripcion','ASC',' - ');
+		
 		$data['index'] = "empleados/show";
 		$data['panelheading'] = "Empleados";
 			
 		$this->load->view('layouts/index', $data);
 		
 	}
+
 	public function add() {
 		
 		$this->form_validation->set_rules('num_empleado', 'Numero de empleado', 'trim|required|xss_clean|numeric|min_length[5]|max_length[6]');
@@ -208,6 +209,24 @@ class Empleados extends MY_Controller {
 		$data['index'] = "empleados/index";
 		$this->load->view('layouts/index', $data);
 		
+	}
+	public function add_pase(){
+		$this->load->model('pases_model');
+		
+		$qna_id 	= $this->input->post('qna_id');
+		$empleado_id 	= $this->input->post('empleado_id');
+		$motivo 	= $this->input->post('motivo');
+		$horario 	= $this->input->post('horario');
+		$fecha_salida 	= fecha_ymd($this->input->post('fecha_salida'));
+
+		$this->pases_model->insert(array(
+				'qna_id' => $qna_id,
+				'empleado_id' => $empleado_id,
+				'motivo' => $motivo,
+				'horario' => $horario,
+				'fecha_salida' => $fecha_salida,
+				
+			));
 	}
 	
 	

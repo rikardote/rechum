@@ -70,13 +70,24 @@
            <div class="container">
            	<div class="row">
             <div class="col-md-3">
-            	<?php form_open('url', ''); ?>
-				<?php echo form_label('What is your Name', 'username'); ?>
-            	<?php echo form_input('name', 'value', "class='form-control'"); ?>
-				<?php echo form_submit('name', 'value',"class='btn btn-primary form-control'"); ?>
-            	<?php form_close(); ?>
+            	<div class="form-group">
+            	<?php $atributos = array('id' => 'miFormulario', 'name' => 'miFormulario'); ?>
+            	<?php $id = '<p><input type="hidden" name="empleado_id" value="'.$empleado_id.'"</p>'; ?>
+            	<?php echo form_open('empleados/add_pase', $atributos); ?>
+				<?php echo $id; ?>
+				<?php echo form_label('Selecciona la qna...', 'username'); ?>
+            	<?php echo form_input('qna_id', '', "class='form-control'"); ?>
+            	<?php echo form_label('Motivo', 'motivo'); ?>
+            	<?php echo form_input('motivo', '', "class='form-control'"); ?>
+            	<?php echo form_label('Salida', 'salida'); ?>
+            	<?php echo form_input('horario', '', "class='form-control'"); ?>
+            	<?php echo form_label('Fecha de salida', 'fecha_salida'); ?>
+            	<?php echo form_input('fecha_salida', '', "class='form-control'"); ?>
+				<p><?php echo form_submit('Submit', 'Ingresar',"class='btn btn-primary form-control'"); ?></p>
+            	<?php echo form_close(); ?>
+            	</div>
             </div>
-            <div class="col-md-7">
+            <div id="showdata" class="col-md-7">
 	            <table class="table table-striped table-condensed">
 	            	<thead>
 	            		<td align="center"><strong>Qna</strong></td>
@@ -126,3 +137,15 @@
     window.location.reload(true);
 })
 </script>
+
+<script type="text/javascript">
+        // wait for the DOM to be loaded 
+        $(document).ready(function() {
+    		$('#miFormulario').ajaxForm({
+      			target: '#showdata',
+     			 success: function() {
+      				$('#showdata').fadeIn('slow');
+      			}
+    		});
+ 		 });
+</script> 
