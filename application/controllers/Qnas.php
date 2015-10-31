@@ -226,7 +226,7 @@ $pdf = $this->m_pdf->load($params);
 	$pdf->WriteHTML($html);
 	 
 	//download it.
-	$pdf->Output($pdfFilePath, "D");
+	$pdf->Output($pdfFilePath, "I");
  
 }
 		

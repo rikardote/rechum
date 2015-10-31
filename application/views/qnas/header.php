@@ -4,7 +4,7 @@
 	
 </head>
 <body>
-<table border="0" cellpadding="0" cellspacing="0" style="width:850px;">
+<table border="0" cellpadding="12" cellspacing="0" style="width:850px;">
 	<tbody>
 		<tr>
 			<td><img alt="" src="<?=base_url()?>assets/images/issste.png" style="width: 400px; height: 108px;" /></td>
@@ -27,6 +27,7 @@
 		</table>
 
 		<tr>
+
 			<p><td><span style="font-size:16px;">CLAVE DE ADSCRIPCION: <strong><?=$reporte2->adscripcion?></strong></span></td></p>
 			<p></p><td align='right'><span style="font-size:16px;">DESCRIPCION: <strong><?=$reporte2->descripcion?></strong></span></td></p>
 		</tr>
