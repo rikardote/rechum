@@ -6,6 +6,7 @@
 			<td><b>Descripcion</b></td>
 			
 			<td align='center'><b>Acciones</b></td>
+			<td></td>
 			</thead>	
 		
 		</tr>
