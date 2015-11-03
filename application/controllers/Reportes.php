@@ -6,7 +6,8 @@ class Reportes extends My_Controller {
 	{
 		parent::__construct();
 		$this->load->model('qna_model');
-		$this->load->library('m_pdf');		
+		$this->load->library('m_pdf');	
+			
 	}
 
 	public function por_empleado()

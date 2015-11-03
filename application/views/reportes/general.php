@@ -21,14 +21,17 @@
 			
 				
 				
-				<td align='center'>
+				<td align="center">
 					<?php echo form_open('reportes/show'); ?>
-					<?php echo form_dropdown('qna_id', $qnas); ?>
+					<?php echo form_dropdown('qna_id', $qnas,null,'class="form-control"'); ?>
 					<?php echo '<input type="hidden", name="centro", value="'.$centro->id.'">'; ?>
-					<?php echo form_submit('name', 'Ok'); ?>
-					
+				</td>
+				<td>
+					<?php echo form_submit('name', 'Ok','class="btn btn-info round btn-sm"'); ?>
 					<?php echo form_close(); ?>
 				</td>
+					
+				
 			
 
 			</tr>
