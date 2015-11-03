@@ -10,6 +10,7 @@ footer {  margin: 40px 0; padding-top: 20px; text-align: right; }
 .nav>li>a:focus {
     text-decoration: none;
     background-color: #e1f1fb;
+
 }
 
 .table tbody tr:hover td, .table tbody tr:hover th {
@@ -166,6 +167,7 @@ footer {  margin: 40px 0; padding-top: 20px; text-align: right; }
     border-color: transparent;
     color: #FFFFFF;
     background-color: transparent;
+
 }
 
 .panel-primary>.panel-heading {
@@ -200,10 +202,11 @@ footer {  margin: 40px 0; padding-top: 20px; text-align: right; }
 }
 .acrobat > a{
   color: #FFFFFF;
-  
+  font-size: 22px;
 }
 .acrobat > a:hover{
   color: #e1f1fb;
+
   
 }
 
