@@ -119,7 +119,7 @@ class Reportes extends My_Controller {
 	$html=$this->load->view('qnas/report_pdf', $data, true);
 	
 	//this the the PDF filename that user will get to download
-	$data['reporte2'] = $this->captura_model->get_report2($qna_id, $centros);
+	$data['reporte2'] = $this->captura_model->get_report2($qna_id, $centro_id);
 	$pdf->setAutoTopMargin = 'stretch';
   	$pdf->setAutoBottomMargin = 'stretch';
   	
