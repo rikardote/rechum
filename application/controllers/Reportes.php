@@ -74,8 +74,8 @@ class Reportes extends My_Controller {
 							$data['qna']->qna_mes.'/'.
 							$data['qna']->qna_year.' - '.
 							$data['qna']->qna_descripcion.
-							'<div align="right">'.
-							anchor('reportes/generar_pdf/'.$link, '<i class="fa fa-file-pdf-o fa-2x"></i>').
+							'<div class="acrobat pull-right">'.
+							anchor('reportes/generar_pdf/'.$link, '<i class="fa fa-file-pdf-o "> PDF</i>').
 							'</div>'
 							;
 		$centros = explode(",",$this->tank_auth->get_user_centros());

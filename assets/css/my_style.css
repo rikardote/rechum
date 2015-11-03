@@ -198,5 +198,12 @@ footer {  margin: 40px 0; padding-top: 20px; text-align: right; }
     overflow-y:scroll;
 
 }
-
+.acrobat > a{
+  color: #FFFFFF;
+  
+}
+.acrobat > a:hover{
+  color: #e1f1fb;
+  
+}
 
