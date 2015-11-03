@@ -46,7 +46,8 @@ class Admin extends admin_base {
     }
     function addlist(){
       $centros = $this->input->post('listbox1[]');
-      var_dump($centros);
+      $centros = implode(",",$centros);
+      echo $centros;
     }
     
 
