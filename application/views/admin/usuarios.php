@@ -9,7 +9,9 @@
  		<td>Num Empleado</td>
  		<td>Nombre</td>
  		<td>Activo</td>
+ 		<td>Centros</td>
  		<td>Administrador</td>
+
 	</thead>	
 
  	</tr>
@@ -33,6 +35,10 @@
 			?>
 			
 				<td><?php echo anchor('admin/activate/'.$user->id,' ',$atributo_boton_activate);?></td>
+				<td><button type="button" class="btn btn-primary btn-sm outline" data-toggle="modal" data-target=".bs-example-modal-sm">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+
+		</button></td>
 				<td><?php echo anchor('admin/activate_admin/'.$user->id,' ',$atributo_boton_admin);?></td>
 					
 				
@@ -46,9 +52,10 @@
 
 
 <div id="mymodal"class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content col-xs-12" >
-       
+  <div class="modal-dialog modal-ls">
+    <div class="modal-content">
+
+	 <?php $this->load->view('admin/list_ads', $centros); ?>       
 
     </div>
   </div>

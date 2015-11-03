@@ -126,9 +126,9 @@ class Reportes extends My_Controller {
   	
   	$pdfFilePath = $data['reporte2']->qna_mes.'-'.$data['reporte2']->qna_year.'-'.$data['reporte2']->descripcion.'.pdf';
   	
-  	$header = $this->load->view('qnas/header', $data, true);
+  	$header = $this->load->view('reportes/header', $data, true);
 	$pdf->setHTMLHeader($header);
-  	$pdf->SetFooter($data['reporte2']->descripcion.'|{DATE j-m-Y} |Hoja {PAGENO} de {nb}');
+  	$pdf->SetFooter($data['reporte2']->descripcion.'|Generado el: {DATE j-m-Y} |Hoja {PAGENO} de {nb}');
 	//load mPDF library
 	$pdf->SetDisplayMode('fullpage');
 	

@@ -32,8 +32,10 @@ class Admin extends admin_base {
     function usuarios(){
        $data['user_id']    = $this->tank_auth->get_user_id();
        $this->load->model('empleado_model');
-        $username   = $this->tank_auth->get_username();
-        $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
+       $this->load->model('adscripcion_model');
+       $username   = $this->tank_auth->get_username();
+       $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
+       $data['centros'] = $this->adscripcion_model->get_all();
        $data['panelheading'] = "Usuarios";
 
        $data['users'] = $this->admin_model->get_empleados();
@@ -41,6 +43,10 @@ class Admin extends admin_base {
        $data['index'] = "admin/usuarios";
        $this->load->view('layouts/index', $data); 
 
+    }
+    function addlist(){
+      $centros = $this->input->post('listbox1[]');
+      var_dump($centros);
     }
     
 
