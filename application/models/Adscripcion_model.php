@@ -16,7 +16,16 @@ class Adscripcion_model extends My_Model {
      parent::__construct();  
     }
     
-  
+	  public function getCentros($centros){
+		$this->db->select('id,adscripcion,descripcion');
+ 		$this->db->from($this->table);
+         
+        $this->db->where_in('id', $centros);
+        $this->db->order_by('adscripcion', 'ASC');
+        $query = $this->db->get();
+        return $query->result();
+        
+	  }
 
 }
 
