@@ -69,8 +69,15 @@ class Reportes extends My_Controller {
         $username   = $this->tank_auth->get_username();
         $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
         $data['qna'] = $this->qna_model->where('id', $qna_id)->get();
-		
-		$data['panelheading'] = "Reporte QNA:    ".$data['qna']->qna_mes.'/'.$data['qna']->qna_year.' - '.$data['qna']->qna_descripcion;
+		$link = $qna_id.'/'.$centro_id;
+		$data['panelheading'] = "Reporte QNA:    ".
+							$data['qna']->qna_mes.'/'.
+							$data['qna']->qna_year.' - '.
+							$data['qna']->qna_descripcion.
+							'<div align="right">'.
+							anchor('reportes/generar_pdf/'.$link, '<i class="fa fa-file-pdf-o fa-2x"></i>').
+							'</div>'
+							;
 		$centros = explode(",",$this->tank_auth->get_user_centros());
 		$data['reporte'] = $this->captura_model->get_report($qna_id, $centro_id);
 		$data['index'] = 'qnas/reporte';
@@ -90,12 +97,13 @@ class Reportes extends My_Controller {
     redirect('qnas/report/'.$qna_id);
   
   }
-  public function reporte_pdf(){
+  public function generar_pdf(){
 	$params = "('', 'Letter', 0, '', 12.7, 12.7, 14, 12.7, 8, 8)";
 	$pdf = $this->m_pdf->load($params);
 		$user_id    = $this->tank_auth->get_user_id();
-		if ($this->uri->segment(3) != '') {
+		if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
 			$qna_id = $this->uri->segment(3);
+			$centro_id = $this->uri->segment(4);
 		}
 		$this->load->model('captura_model');
 		$this->load->model('empleado_model');
@@ -104,8 +112,8 @@ class Reportes extends My_Controller {
         $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
         $data['qna'] = $this->qna_model->where('id', $qna_id)->get();
 		
-		$centros = explode(",",$this->tank_auth->get_user_centros());
-		$data['reporte'] = $this->captura_model->get_report($qna_id, $centros);
+		//$centros_id = explode(",",$this->tank_auth->get_user_centros());
+		$data['reporte'] = $this->captura_model->get_report($qna_id, $centro_id);
 
 		 //load the view and saved it into $html variable
 	$html=$this->load->view('qnas/report_pdf', $data, true);
@@ -127,7 +135,7 @@ class Reportes extends My_Controller {
 	$pdf->WriteHTML($html);
 	 
 	//download it.
-	$pdf->Output($pdfFilePath, "I");
+	$pdf->Output($pdfFilePath, "D");
  
 }
 		
