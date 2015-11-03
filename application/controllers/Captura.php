@@ -57,7 +57,7 @@ class Captura extends My_Controller {
 			$data['empleado'] = $this->captura_model->get_empleado_join($id);
 			$this->load->helper('dropdown');
 			$data['options'] = listData('incidencias','id','incidencia_cod' ,'inc_descripcion','ASC',' - ');
-			$data['periodos'] = listData2('periodos','id','period' ,'year');
+			$data['periodos'] = listData2('periodos','id','period' ,'year','activo');
 					
 			$data['capturas'] = $this->captura_model->get_incidencias($id,$qna);
 

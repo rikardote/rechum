@@ -1,4 +1,3 @@
-
 <?php if (isset($reporte)): ?>
 
 	<table class="table table-condensed table-hover ">

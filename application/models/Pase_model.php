@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pases_model extends My_Model {
+class Pase_model extends My_Model {
 
     
 

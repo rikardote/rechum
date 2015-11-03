@@ -68,48 +68,15 @@
         </div>
         <div class="tab-pane" id="tab_c">
            <div class="container">
-           	<div class="row">
-            <div class="col-md-3">
-            	<div class="form-group">
-            	<?php $atributos = array('id' => 'miFormulario', 'name' => 'miFormulario'); ?>
-            	<?php $id = '<p><input type="hidden" name="empleado_id" value="'.$empleado_id.'"</p>'; ?>
-            	<?php echo form_open('empleados/add_pase', $atributos); ?>
-				<?php echo $id; ?>
-				<?php echo form_label('Selecciona la qna...', 'username'); ?>
-            	<?php echo form_input('qna_id', '', "class='form-control'"); ?>
-            	<?php echo form_label('Motivo', 'motivo'); ?>
-            	<?php echo form_input('motivo', '', "class='form-control'"); ?>
-            	<?php echo form_label('Salida', 'salida'); ?>
-            	<?php echo form_input('horario', '', "class='form-control'"); ?>
-            	<?php echo form_label('Fecha de salida', 'fecha_salida'); ?>
-            	<?php echo form_input('fecha_salida', '', "class='form-control'"); ?>
-				<p><?php echo form_submit('Submit', 'Ingresar',"class='btn btn-primary form-control'"); ?></p>
-            	<?php echo form_close(); ?>
-            	</div>
-            </div>
-            <div id="showdata" class="col-md-7">
-	            <table class="table table-striped table-condensed">
-	            	<thead>
-	            		<td align="center"><strong>Qna</strong></td>
-	            		<td align="center"><strong>Motivo</strong></td>
-	            		<td align="center"><strong>Salida</strong></td>
-	            		<td align="center"><strong>Fecha de salida</strong></td>
-	            		
-	            	</thead>
-	            	<tbody>
-	            		<?php foreach ($pases as $pase): ?>
-	            		<td align="left"><?php echo $pase->qna_mes.'/'.$pase->qna_year.' - '.$pase->qna_descripcion;?></td>
-	            		<td align="left"><?=$pase->motivo?></td>
-	            		<td align="center"><?=$pase->horario?></td>
-	            		<td align="center"><?=fecha_dma($pase->fecha_salida)?></td>
-	            	</tbody>
-	            	<?php endforeach ?>
-		
-	            </table>
-	            
-            </div>
-        </div>
-        </div>
+           		<div class="row">
+           			<div class="col-md-2">
+            			<?php $this->load->view('empleados/form_pases'); ?>
+            		</div>
+            		<div id="showdata2" class="col-md-8">
+			            <?php $this->load->view('empleados/show_pases'); ?>
+	                </div>
+        		</div>
+        	</div>
         </div>
         <div class="tab-pane" id="tab_d">
             <h4>Pane D</h4>
@@ -138,14 +105,3 @@
 })
 </script>
 
-<script type="text/javascript">
-        // wait for the DOM to be loaded 
-        $(document).ready(function() {
-    		$('#miFormulario').ajaxForm({
-      			target: '#showdata',
-     			 success: function() {
-      				$('#showdata').fadeIn('slow');
-      			}
-    		});
- 		 });
-</script> 

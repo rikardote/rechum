@@ -29,7 +29,8 @@ class Empleados extends MY_Controller {
 	}
 	public function show($id) {
 		$data['user_id']    = $this->tank_auth->get_user_id();
-        $this->load->model('pases_model');
+        $this->load->model('pase_model');
+        $this->load->model('qna_model');
         $username   = $this->tank_auth->get_username();
         $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
 	    $data['is_admin']   = $this->tank_auth->is_admin();
@@ -37,9 +38,11 @@ class Empleados extends MY_Controller {
 			$id = $this->uri->segment(3);
 		}
 		$data['empleado_id'] = $id;
-		$data['pases'] = $this->pases_model->get_pases($id);
+		$data['pases'] = $this->pase_model->get_pases($id);
+		$data['qnas'] = listData2('qnas','id','qna_mes' ,'qna_year','activa');
+
 		$data['empleado'] = $this->empleado_model->get_empleado_join($id);
-		
+		$data['options'] = listData('adscripciones','id','adscripcion' ,'descripcion','ASC',' - ');
 		$data['index'] = "empleados/show";
 		$data['panelheading'] = "Empleados";
 			
@@ -210,8 +213,8 @@ class Empleados extends MY_Controller {
 		$this->load->view('layouts/index', $data);
 		
 	}
-	public function add_pase(){
-		$this->load->model('pases_model');
+	public function agregar_pase(){
+		$this->load->model('pase_model');
 		
 		$qna_id 	= $this->input->post('qna_id');
 		$empleado_id 	= $this->input->post('empleado_id');
@@ -219,7 +222,7 @@ class Empleados extends MY_Controller {
 		$horario 	= $this->input->post('horario');
 		$fecha_salida 	= fecha_ymd($this->input->post('fecha_salida'));
 
-		$this->pases_model->insert(array(
+		$this->pase_model->insert(array(
 				'qna_id' => $qna_id,
 				'empleado_id' => $empleado_id,
 				'motivo' => $motivo,
@@ -227,6 +230,18 @@ class Empleados extends MY_Controller {
 				'fecha_salida' => $fecha_salida,
 				
 			));
+		$data['pases'] = $this->pase_model->get_pases($empleado_id);
+		$this->load->view('empleados/show_pases', $data);
+	}
+	public function delete_pase(){
+		$this->load->model('pase_model');
+		$id 	= $this->input->post('id');
+		$empleado_id 	= $this->input->post('empleado_id');
+		$this->pase_model->delete($id);
+		$data['pases'] = $this->pase_model->get_pases($empleado_id);
+		$this->load->view('empleados/show_pases', $data);
+
+		
 	}
 	
 	

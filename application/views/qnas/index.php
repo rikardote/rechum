@@ -11,17 +11,14 @@
 			<thead>
 				<td><b>Quincena</b></td>
 				<td><b>Descripcion</b></td>
-				<td><b>Reporte</b></td>
-				<td><b>PDF</b></td>
-				<?php if ($is_admin): ?>
 				<td><b>Acciones</b></td>
-				<?php endif ?>
+				
 			</thead>	
 			</tr>
 			
 	<?php $atributo_boton_modificar = array('data-toggle' => 'modal', 'data-target' => '.bs-example-modal-sm', 'class' => 'btn btn-warning btn-sm glyphicon glyphicon-pencil');?>
-	<?php $atributo_boton_reports = array('class' => 'btn btn-primary btn-sm fa fa-list');?>				
-	<?php $atributo_boton_report_pdf = array('class' => 'btn btn-danger btn-sm fa fa-file-pdf-o fa-2');?>				
+			
+				
 	<?php	foreach ($qnas as $qna): ?>
 			<tr>
 				<td><b><?php echo $qna->qna_mes.'/'.$qna->qna_year;?></b></td>
@@ -35,9 +32,6 @@
 					}
 				?>
 				
-				<td><?php  echo anchor('qnas/report/'.$qna->id,' ',$atributo_boton_reports);?> </td> 
-				<td><?php echo anchor('qnas/reporte_pdf/'.$qna->id,' ',$atributo_boton_report_pdf);?></td>
-				<?php if ($is_admin): ?>
 					<td>
 						
 						<?php echo anchor('qnas/activate/'.$qna->id,' ',$atributo_boton_activate);?>
@@ -45,7 +39,7 @@
 
 						
 					</td>
-				<?php endif ?>
+			
 			</tr>
 
 	<?php 	endforeach;?>

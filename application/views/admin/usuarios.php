@@ -21,14 +21,14 @@
  			<td><?php echo nombre_completo($user->nombres, $user->apellido_pat,$user->apellido_mat);?></td>
  			<?php
 				if($user->activated) {
-					$atributo_boton_activate = array('class' => 'btn btn-success glyphicon glyphicon-off'); 
+					$atributo_boton_activate = array('class' => 'btn btn-success btn-sm glyphicon glyphicon-off'); 
 				} else {
-					$atributo_boton_activate = array('class' => 'btn btn-default glyphicon glyphicon-off'); 
+					$atributo_boton_activate = array('class' => 'btn btn-default btn-sm glyphicon glyphicon-off'); 
 				}
 				if($user->is_admin) {
-					$atributo_boton_admin = array('class' => 'btn btn-success glyphicon glyphicon-off'); 
+					$atributo_boton_admin = array('class' => 'btn btn-success btn-sm glyphicon glyphicon-off'); 
 				} else {
-					$atributo_boton_admin = array('class' => 'btn btn-default glyphicon glyphicon-off'); 
+					$atributo_boton_admin = array('class' => 'btn btn-default btn-sm glyphicon glyphicon-off'); 
 				}
 			?>
 			

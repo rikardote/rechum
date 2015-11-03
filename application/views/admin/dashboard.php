@@ -16,6 +16,10 @@
         	<?php echo anchor('admin/estadistica','<i class="fa fa-bar-chart fa-5x"></i>'); ?>	
 					<br>Estadistica
         </div>
+        <div class="col-sm-4 col-xs-6">
+          <?php echo anchor('qnas','<i class="fa fa-calendar-check-o fa-5x"></i>'); ?> 
+          <br>Quincenas
+        </div>
          <div class="col-sm-4 col-xs-6">
         	<?php echo anchor('periodos','<i class="fa fa-plane fa-5x"></i>'); ?>	
 					<br>Periodos Vacacionales

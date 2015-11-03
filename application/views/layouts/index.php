@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 	<meta charset="UTF-8">
@@ -64,16 +64,18 @@ function checkTime(i) {
 
       </div>
 	</div>
-</div>		
-
-
 <footer>
-	<div class="container">
+  <div class="container">
 
-		<div id="txt"></div>
+    <div id="txt"></div>
          &copy;  <? echo date('Y');?> ISSSTE BAJA CALIFORNIA
     </div>
 </footer>
+
+</div>		
+
+
+
 
 
 </body>

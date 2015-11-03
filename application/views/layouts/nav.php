@@ -14,31 +14,30 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-           <ul class="nav navbar-nav navbar-right">
+       <ul class="nav navbar-nav navbar-right">
+        <li class="<?php echo active_link('empleados'); ?>"><a href="<?php echo base_url();?>empleados">Empleados</a></li>
+        <li class="<?php echo active_link('captura'); ?>"><a href="<?php echo base_url();?>captura">Capturar Incidencias</a></li>
         
-        <!-- Single button -->
-        <div class="">
-          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           <?=$nombre_de_usuario->nombres?> <span class="caret"></span>
-          </button>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+             Reportes<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="<?=base_url()?>admin"><i class="fa fa-cog"></i> Administrador</a></li>
+           <li><a href="<?=base_url()?>reportes/empleado"> Por Empleado</a></li>
+            
+            <li role="separator" class="divider"></li>
+            <li><a href="<?=base_url()?>reportes/general"> General</a></li>
+          </ul>
+        </li>    
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+             <?=$nombre_de_usuario->nombres?> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+           <li><a href="<?=base_url()?>admin"><i class="fa fa-cog"></i> Administrador</a></li>
             
             <li role="separator" class="divider"></li>
             <li><a href="<?=base_url()?>auth/logout"><i class="fa fa-sign-out"></i> Salir</a></li>
           </ul>
-        </div>
-        
-
-        
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        
-        <li class="<?php echo active_link('empleados'); ?>"><a href="<?php echo base_url();?>empleados">Empleados</a></li>
-        <li class="<?php echo active_link('captura'); ?>"><a href="<?php echo base_url();?>captura">Capturar Incidencias</a></li>
-        <li class="<?php echo active_link('qnas'); ?>"><a href="<?php echo base_url();?>qnas">Reportes</a></li>
-        
+        </li>       
       </ul>
       
 

@@ -6,7 +6,7 @@ class Qnas extends My_Controller {
 	{
 		parent::__construct();
 		$this->load->model('qna_model');
-			
+		$this->load->library('m_pdf');		
 	}
 
 	public function index()
@@ -56,7 +56,10 @@ class Qnas extends My_Controller {
 		$this->load->view('layouts/index', $data);	
 
 	}
-	
+	public function getAll() {
+		
+		
+	}
 
 	public function add() {
 		$this->form_validation->set_rules('qna_mes', 'Qna', 'trim|required|numeric|min_length[1]|max_length[2]');
@@ -154,7 +157,25 @@ class Qnas extends My_Controller {
 				);
 		redirect('qnas');
 	}
-	
+	public function report(){
+		$user_id    = $this->tank_auth->get_user_id();
+		if ($this->uri->segment(3) != '') {
+			$qna_id = $this->uri->segment(3);
+		}
+		$this->load->model('captura_model');
+		$this->load->model('empleado_model');
+		$this->load->model('qna_model');
+        $username   = $this->tank_auth->get_username();
+        $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
+        $data['qna'] = $this->qna_model->where('id', $qna_id)->get();
+		
+		$data['panelheading'] = "Reporte QNA:    ".$data['qna']->qna_mes.'/'.$data['qna']->qna_year.' - '.$data['qna']->qna_descripcion;
+		$centros = explode(",",$this->tank_auth->get_user_centros());
+		$data['reporte'] = $this->captura_model->get_report($qna_id, $centros);
+		$data['index'] = 'qnas/reporte';
+
+		$this->load->view('layouts/index', $data);	
+	}
     public function delete($token) {
     $this->load->model('captura_model');
     if ($this->uri->segment(4)) {
@@ -167,7 +188,47 @@ class Qnas extends My_Controller {
     redirect('qnas/report/'.$qna_id);
   
   }
+  public function reporte_pdf()
+{
+	$params = "('', 'Letter', 0, '', 12.7, 12.7, 14, 12.7, 8, 8)";
+$pdf = $this->m_pdf->load($params);
+		$user_id    = $this->tank_auth->get_user_id();
+		if ($this->uri->segment(3) != '') {
+			$qna_id = $this->uri->segment(3);
+		}
+		$this->load->model('captura_model');
+		$this->load->model('empleado_model');
+		$this->load->model('qna_model');
+        $username   = $this->tank_auth->get_username();
+        $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
+        $data['qna'] = $this->qna_model->where('id', $qna_id)->get();
+		
+		$centros = explode(",",$this->tank_auth->get_user_centros());
+		$data['reporte'] = $this->captura_model->get_report($qna_id, $centros);
+
+		 //load the view and saved it into $html variable
+	$html=$this->load->view('qnas/report_pdf', $data, true);
+	
+	//this the the PDF filename that user will get to download
+	$data['reporte2'] = $this->captura_model->get_report2($qna_id, $centros);
+	$pdf->setAutoTopMargin = 'stretch';
+  	$pdf->setAutoBottomMargin = 'stretch';
+  	
+  	$pdfFilePath = $data['reporte2']->qna_mes.'-'.$data['reporte2']->qna_year.'-'.$data['reporte2']->descripcion.'.pdf';
+  	
+  	$header = $this->load->view('qnas/header', $data, true);
+	$pdf->setHTMLHeader($header);
+  	$pdf->SetFooter($data['reporte2']->descripcion.'|{DATE j-m-Y} |Hoja {PAGENO} de {nb}');
+	//load mPDF library
+	$pdf->SetDisplayMode('fullpage');
+	
+	//generate the PDF from the given html
+	$pdf->WriteHTML($html);
+	 
+	//download it.
+	$pdf->Output($pdfFilePath, "I");
  
+}
 		
 
 }
