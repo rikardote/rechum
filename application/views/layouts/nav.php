@@ -20,12 +20,14 @@
         
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-             Reportes<span class="caret"></span></a>
+             Reportes <span class="caret"></span></a>
           <ul class="dropdown-menu">
            <li><a href="<?=base_url()?>reportes/por_empleado"> Por Empleado</a></li>
             
-            <li role="separator" class="divider"></li>
-            <li><a href="<?=base_url()?>reportes/general"> General</a></li>
+            
+            <li><a href="<?=base_url()?>reportes/general"> Por Quincena</a></li>
+            
+            <li><a href="<?=base_url()?>reportes/general"> Por Rango de fechas</a></li>
           </ul>
         </li>    
         <li class="dropdown">
