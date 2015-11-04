@@ -20,7 +20,7 @@
         
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-             <i class="fa fa-file-text fa-3x"></i> Reportes <span class="caret"></span></a>
+             <i class="fa fa-file-pdf-o fa-3x"></i> Reportes <span class="caret"></span></a>
           <ul class="dropdown-menu">
            <li><a href="<?=base_url()?>reportes/por_empleado"> Por Empleado</a></li>
             
