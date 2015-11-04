@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="<?php echo site_url();?>assets/css/bsclassmaker-linkedin.css">
 <link rel="stylesheet" href="<?php echo site_url();?>assets/css/buttons.css">
 <link rel="stylesheet" href="<?php echo site_url();?>assets/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
 
 <script src="<?php echo site_url();?>assets/js/jquery-1.11.3.min.js"></script>
 <script src="<?php echo site_url();?>assets/js/jquery-ui.js"></script>
