@@ -16,6 +16,7 @@ body{
 
 }
 
+
 .table tbody tr:hover td, .table tbody tr:hover th {
     background-color: #e1f1fb      ;
 }
