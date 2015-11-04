@@ -44,11 +44,41 @@ class Admin extends admin_base {
        $this->load->view('layouts/index', $data); 
 
     }
-    function addlist(){
-      $centros = $this->input->post('listbox1[]');
-      $centros = implode(",",$centros);
-      echo $centros;
+    function asignar_centro(){
+      $data['user_id']    = $this->tank_auth->get_user_id();
+       $this->load->model('empleado_model');
+       $this->load->model('adscripcion_model');
+       $username   = $this->tank_auth->get_username();
+       $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
+      if ($this->uri->segment(3) != '') {
+        $data['user_id'] = $this->uri->segment(3);
+      }
+      $this->load->model('adscripcion_model');
+      $data['centros'] = $this->adscripcion_model->get_all();
+      $data['panelheading'] = "Asignar Centros de trabajo";
+            
+      $data['index'] = "admin/asignar_centro";
+      $this->load->view('layouts/index', $data); 
+
+     //$centros = $this->input->post('listbox1[]');
+     // $centros = implode(",",$centros);
+     
     }
+    function agregar_centro_a_usuario(){
+     $centros = $this->input->post('listbox1[]');
+     $centros = implode(",",$centros); 
+     $user_id = $this->input->post('user_id');
+     $this->admin_model->update(array(
+          'centros' => $centros),
+          $user_id
+        
+     );
+     redirect('admin/usuarios');
+     
+     
+    }
+
+
     
 
     public function activate(){
