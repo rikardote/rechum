@@ -575,8 +575,7 @@ class Admin extends admin_base {
             }
             unset($data['password']); // Clear password (just for any case)
 
-            $data['index'] = "admin/dashboard";
-            $this->load->view('layouts/index', $data);
+            redirect('admin/usuarios');
             //$this->_show_message($this->lang->line('auth_message_registration_completed_2').' '.anchor('/auth/login/', 'Login'));
           }
         } else {
