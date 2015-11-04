@@ -23,11 +23,10 @@
              <i class="fa fa-file-pdf-o fa-3x"></i> Reportes <span class="caret"></span></a>
           <ul class="dropdown-menu">
            <li><a href="<?=base_url()?>reportes/por_empleado"> Por Empleado</a></li>
-            
-            
-            <li><a href="<?=base_url()?>reportes/general"> Por Quincena</a></li>
-            
-            <li><a href="<?=base_url()?>reportes/general"> Por Rango de fechas</a></li>
+           <li><a href="<?=base_url()?>reportes/general"> Por Quincena</a></li>
+           <li><a href="<?=base_url()?>reportes/general"> Por Rango de fechas</a></li>
+           <li role="separator" class="divider"></li>
+           <li><a href="<?=base_url()?>reportes/sin_derecho"> Sin derecho a nota buena</a></li>
           </ul>
         </li>    
         <li class="dropdown">

@@ -53,16 +53,12 @@ class Admin extends admin_base {
       if ($this->uri->segment(3) != '') {
         $data['user_id'] = $this->uri->segment(3);
       }
-      $this->load->model('adscripcion_model');
+      
       $data['centros'] = $this->adscripcion_model->get_all();
       $data['panelheading'] = "Asignar Centros de trabajo";
             
       $data['index'] = "admin/asignar_centro";
       $this->load->view('layouts/index', $data); 
-
-     //$centros = $this->input->post('listbox1[]');
-     // $centros = implode(",",$centros);
-     
     }
     function agregar_centro_a_usuario(){
      $centros = $this->input->post('listbox1[]');
@@ -77,9 +73,6 @@ class Admin extends admin_base {
      
      
     }
-
-
-    
 
     public function activate(){
     if ($this->uri->segment(3) != '') {

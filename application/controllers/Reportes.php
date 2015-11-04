@@ -101,22 +101,22 @@ class Reportes extends My_Controller {
   public function generar_pdf(){
 	$params = "('', 'Letter', 0, '', 12.7, 12.7, 14, 12.7, 8, 8)";
 	$pdf = $this->m_pdf->load($params);
-		$user_id    = $this->tank_auth->get_user_id();
-		if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
-			$qna_id = $this->uri->segment(3);
-			$centro_id = $this->uri->segment(4);
-		}
-		$this->load->model('captura_model');
-		$this->load->model('empleado_model');
-		$this->load->model('qna_model');
-        $username   = $this->tank_auth->get_username();
-        $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
-        $data['qna'] = $this->qna_model->where('id', $qna_id)->get();
-		
-		//$centros_id = explode(",",$this->tank_auth->get_user_centros());
-		$data['reporte'] = $this->captura_model->get_report($qna_id, $centro_id);
+	$user_id    = $this->tank_auth->get_user_id();
+	if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
+		$qna_id = $this->uri->segment(3);
+		$centro_id = $this->uri->segment(4);
+	}
+	$this->load->model('captura_model');
+	$this->load->model('empleado_model');
+	$this->load->model('qna_model');
+    $username   = $this->tank_auth->get_username();
+    $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
+    $data['qna'] = $this->qna_model->where('id', $qna_id)->get();
+	
+	//$centros_id = explode(",",$this->tank_auth->get_user_centros());
+	$data['reporte'] = $this->captura_model->get_report($qna_id, $centro_id);
 
-		 //load the view and saved it into $html variable
+	 //load the view and saved it into $html variable
 	$html=$this->load->view('qnas/report_pdf', $data, true);
 	
 	//this the the PDF filename that user will get to download
@@ -139,6 +139,67 @@ class Reportes extends My_Controller {
 	$pdf->Output($pdfFilePath, "D");
  
 }
+	public function sin_derecho(){
+		$this->load->model('empleado_model');
+		$this->load->model('captura_model');
+		$data['user_id']    = $this->tank_auth->get_user_id();
+	    $username   = $this->tank_auth->get_username();
+	    $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
+	    $data['is_admin']   = $this->tank_auth->is_admin();
+	    //$data['sin_derecho'] = $this->captura_model->get_sin_derecho($fecha_inicio, $fecha_final);
+
+
+
+
+
+	    $data['panelheading'] = "Reporte Sin derecho a nota buena por desempeno";
+	    $data['index'] = 'reportes/sin_derecho';
+		$this->load->view('layouts/index', $data);	
+	}
+	public function get_reporte_sin_derecho(){
+		$this->load->model('captura_model');
+		$this->load->model('empleado_model');
+		$this->load->model('reporte_model');
+	
+		$data['user_id']    = $this->tank_auth->get_user_id();
+	    $username   = $this->tank_auth->get_username();
+	    $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
+	    $data['is_admin']   = $this->tank_auth->is_admin();
+
+		$fecha_inicial = fecha_ymd($this->input->post('fecha_inicial'));
+		$fecha_final = fecha_ymd($this->input->post('fecha_final'));
+		
+		
+	    $data['sin_derecho'] = $this->reporte_model->get_sin_derecho($fecha_inicial, $fecha_final);
+		
+
+		
+
+	    $data['panelheading'] = "Reporte Sin derecho a nota buena por desempeno";
+	    $data['index'] = 'reportes/reporte_sin_derecho';
+		$this->load->view('layouts/index', $data);	
+	}
+	public function search(){
+    	$data['user_id']    = $this->tank_auth->get_user_id();
+        $this->load->model('empleado_model');
+        $this->load->helper('dropdown');
+        $username   = $this->tank_auth->get_username();
+        $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
+        $data['is_admin']   = $this->tank_auth->is_admin();
+    	$data['panelheading'] = "Reporte Sin derecho a nota buena por desempeno";
+		
+		$centros = explode(",",$this->tank_auth->get_user_centros());
+       	$data['empleado'] = $this->empleado_model->get_search($centros);
+		
+		if (empty($data['empleado'])) {
+			$data['noencontrado'] = " <strong><i class='fa fa-exclamation-triangle'></i> Atencion!</strong><br>Empleado no encontrado o no pertenece a su adscripcion<br>Informacion en Recursos Humanos";
+			$data['empleado'] = NULL;
+		}
+		$data['options'] = listData('adscripciones','id','adscripcion' ,'descripcion','ASC',' - ');
+		 $data['index'] = 'reportes/sin_derecho';
+		$this->load->view('layouts/index', $data);
+		
+	}
 		
 
 }
