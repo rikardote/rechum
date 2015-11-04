@@ -11,7 +11,7 @@
 		    
 			);
 			?>
-				<?php	echo form_label('Estadistica por Delegacion', 'fecha_final');?>
+				<?php	echo form_label('Ausentismo por Delegacion', 'fecha_final');?>
 				<?php echo form_open('admin/estadistica_por_delegacion', $data); ?>
 				<?php 
 				$data = array(
@@ -63,7 +63,7 @@
 		    
 			);
 			?>
-			<?php	echo form_label('Estadistica por centro de trabajo', 'fecha_final');?>
+			<?php	echo form_label('Ausentismo por centro de trabajo', 'fecha_final');?>
 			<?php echo form_open('admin/estadistica_por_centro', $data); ?>
 			<?php 
 			$data = array(
@@ -111,7 +111,7 @@
 		    
 			);
 			?>
-			<?php	echo form_label('Estadistica por empleado', 'fecha_final');?>
+			<?php	echo form_label('Ausentismo por empleado', 'fecha_final');?>
 			<?php echo form_open('admin/estadistica_por_empleado',$data); ?>
 			<?php 
 			$data = array(

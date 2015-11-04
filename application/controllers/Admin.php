@@ -116,7 +116,7 @@ class Admin extends admin_base {
        
        $username   = $this->tank_auth->get_username();
        $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
-       $data['panelheading'] = "Estadistica";
+       $data['panelheading'] = "Ausentismo";
        
        $data['qnas'] = listData('qnas','id','qna_mes' ,'qna_year', 'DESC','/');
        //$data['qnas'] = $this->qna_model->order_by('qna_year','ASC')->order_by('qna_mes','ASC')->get_all();             
@@ -149,7 +149,7 @@ class Admin extends admin_base {
        $username   = $this->tank_auth->get_username();
        $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
        
-       $data['panelheading'] = "Estadistica por centro de trabajo";
+       $data['panelheading'] = "Ausentismo por centro de trabajo";
        
     
        $data['index'] = "admin/estadistica/por_centro";
@@ -215,7 +215,7 @@ class Admin extends admin_base {
        $username   = $this->tank_auth->get_username();
        $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
        
-       $data['panelheading'] = "Estadistica por centro de trabajo";
+       $data['panelheading'] = "Ausentismo por centro de trabajo";
        
     
        $data['index'] = "admin/estadistica/totales";
@@ -262,7 +262,7 @@ class Admin extends admin_base {
        $username   = $this->tank_auth->get_username();
        $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
        
-       $data['panelheading'] = "Estadistica por centro de trabajo";
+       $data['panelheading'] = "Ausentismo por centro de trabajo";
        
     
        $data['index'] = "admin/estadistica/totales";
@@ -310,7 +310,7 @@ class Admin extends admin_base {
        $username   = $this->tank_auth->get_username();
        $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
        
-       $data['panelheading'] = "Estadistica por Delegacion del: ".fecha_dma($data['fecha_inicial'])." Al ".fecha_dma($data['fecha_final']);
+       $data['panelheading'] = "Ausentismo por Delegacion del: ".fecha_dma($data['fecha_inicial'])." Al ".fecha_dma($data['fecha_final']);
        $data['link_back'] = 'estadistica';
     
        $data['index'] = "admin/estadistica/totales";

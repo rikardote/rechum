@@ -14,7 +14,7 @@
         </div>
         <div class="col-sm-4 col-xs-6">
         	<?php echo anchor('admin/estadistica','<i class="fa fa-bar-chart fa-5x"></i>'); ?>	
-					<br>Estadistica
+					<br>Ausentismo
         </div>
         <div class="col-sm-4 col-xs-6">
           <?php echo anchor('qnas','<i class="fa fa-calendar-check-o fa-5x"></i>'); ?> 

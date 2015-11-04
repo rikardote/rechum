@@ -15,12 +15,12 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
        <ul class="nav navbar-nav navbar-right">
-        <li class="<?php echo active_link('empleados'); ?>"><a href="<?php echo base_url();?>empleados">Empleados</a></li>
-        <li class="<?php echo active_link('captura'); ?>"><a href="<?php echo base_url();?>captura">Capturar Incidencias</a></li>
+        <li class="<?php echo active_link('empleados'); ?>"><a href="<?php echo base_url();?>empleados"><i class="fa fa-users fa-3x"></i>Empleados</a></li>
+        <li class="<?php echo active_link('captura'); ?>"><a href="<?php echo base_url();?>captura"><i class="fa fa-pencil-square-o fa-3x"></i>Capturar Incidencias</a></li>
         
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-             Reportes <span class="caret"></span></a>
+             <i class="fa fa-file-text fa-3x"></i> Reportes <span class="caret"></span></a>
           <ul class="dropdown-menu">
            <li><a href="<?=base_url()?>reportes/por_empleado"> Por Empleado</a></li>
             
@@ -32,7 +32,7 @@
         </li>    
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-             <?=$nombre_de_usuario->nombres?> <span class="caret"></span></a>
+             <i class="fa fa-user fa-3x"></i> <?=$nombre_de_usuario->nombres?> <span class="caret"></span></a>
           <ul class="dropdown-menu">
            <li><a href="<?=base_url()?>admin"><i class="fa fa-cog"></i> Administrador</a></li>
             
