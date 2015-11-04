@@ -87,16 +87,14 @@ class Reporte_model extends My_Model {
         $this->db->join('empleados', 'empleados.id = captura_incidencias.empleado_id');
         $this->db->join('incidencias', 'incidencias.id = captura_incidencias.incidencia_id');
         $this->db->join('periodos', 'periodos.id = captura_incidencias.periodo_id');
-               
-        $this->db->where('fecha_inicial BETWEEN "'. date('Y-m-d', strtotime($fecha_inicial)). '" and "'. date('Y-m-d', strtotime($fecha_final)).'"');
         $this->db->where('incidencias.incidencia_cod =', 01);
-        $this->db->where('incidencias.incidencia_cod =', 02);
-        $this->db->where('incidencias.incidencia_cod =', 03);
-        $this->db->where('incidencias.incidencia_cod =', 04);
-        $this->db->where('incidencias.incidencia_cod =', 08);
-        $this->db->where('incidencias.incidencia_cod =', 10);
-        $this->db->where('incidencias.incidencia_cod =', 18);
-        $this->db->where('incidencias.incidencia_cod =', 19);
+        $this->db->or_where('incidencias.incidencia_cod =', 02);
+        $this->db->or_where('incidencias.incidencia_cod =', 03);
+        $this->db->or_where('incidencias.incidencia_cod =', 04);
+        $this->db->or_where('incidencias.incidencia_cod =', 08);
+        $this->db->or_where('incidencias.incidencia_cod =', 10);
+        $this->db->or_where('incidencias.incidencia_cod =', 18);
+        $this->db->or_where('incidencias.incidencia_cod =', 19);
         $this->db->or_where('incidencias.incidencia_cod =', 41);
         $this->db->or_where('incidencias.incidencia_cod =', 40);
         $this->db->or_where('incidencias.incidencia_cod =', 46);
@@ -104,6 +102,7 @@ class Reporte_model extends My_Model {
         $this->db->or_where('incidencias.incidencia_cod =', 53);
         $this->db->or_where('incidencias.incidencia_cod =', 54);
         $this->db->or_where('incidencias.incidencia_cod =', 55);
+        $this->db->where('fecha_inicial BETWEEN "'. date('Y-m-d', strtotime($fecha_inicial)). '" and "'. date('Y-m-d', strtotime($fecha_final)).'"');
         $this->db->group_by('token');
         $this->db->order_by('incidencia_cod', 'ASC');
        
