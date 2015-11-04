@@ -83,14 +83,14 @@ $captcha = array(
 <table>
 	<tr>
 		<div class="input-group">
-		<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><?php echo form_input($login); ?>
+		<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span><?php echo form_input($login); ?>
 		<td style="color: red;"><?php echo form_error($login['name']); ?><?php echo isset($errors[$login['name']])?$errors[$login['name']]:''; ?></td>
 		</div>
 	</tr>
 	<tr>
 		<div class="input-group">
 		
-		<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span><?php echo form_password($password); ?>
+		<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span><?php echo form_password($password); ?>
 		<td style="color: red;"><?php echo form_error($password['name']); ?><?php echo isset($errors[$password['name']])?$errors[$password['name']]:''; ?></td>
 	</div>
 	</tr>

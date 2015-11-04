@@ -32,9 +32,9 @@
         </li>    
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-             <i class="fa fa-user fa-3x"></i> <?=$nombre_de_usuario->nombres?> <span class="caret"></span></a>
+             <i class="fa fa-circle-o-notch fa-3x"></i> <?=$nombre_de_usuario->nombres?> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-           <li><a href="<?=base_url()?>admin"><i class="fa fa-cog"></i> Administrador</a></li>
+           <li><a href="<?=base_url()?>admin"><i class="fa fa-cog fa-spin"></i> Administrador</a></li>
             
             <li role="separator" class="divider"></li>
             <li><a href="<?=base_url()?>auth/logout"><i class="fa fa-sign-out"></i> Salir</a></li>

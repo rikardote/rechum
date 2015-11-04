@@ -205,7 +205,7 @@ class Empleados extends MY_Controller {
        	$data['empleado'] = $this->empleado_model->get_search($centros);
 		
 		if (empty($data['empleado'])) {
-			$data['noencontrado'] = " <strong>Atencion!</strong><br>Empleado no encontrado o no pertenece a su adscripcion<br>Informacion en Recursos Humanos";
+			$data['noencontrado'] = " <strong><i class='fa fa-exclamation-triangle'></i> Atencion!</strong><br>Empleado no encontrado o no pertenece a su adscripcion<br>Informacion en Recursos Humanos";
 			$data['empleado'] = NULL;
 		}
 		$data['options'] = listData('adscripciones','id','adscripcion' ,'descripcion','ASC',' - ');

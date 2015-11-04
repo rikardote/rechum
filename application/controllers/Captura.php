@@ -167,7 +167,7 @@ class Captura extends My_Controller {
 		$centros = explode(",",$this->tank_auth->get_user_centros());
        		$data['empleado'] = $this->captura_model->get_search($centros);
 		if (empty($data['empleado'])) {
-			$data['noencontrado'] = " <strong>Atencion!</strong><br>Empleado no encontrado o no pertenece a su adscripcion<br>Informacion en Recursos Humanos";
+			$data['noencontrado'] = " <strong><i class='fa fa-exclamation-triangle'></i> Atencion!</strong><br>Empleado no encontrado o no pertenece a su adscripcion<br>Informacion en Recursos Humanos";
 			$data['empleado'] = NULL;
 		}
 		$this->load->model('qna_model');

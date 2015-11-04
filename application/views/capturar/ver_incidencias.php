@@ -24,6 +24,8 @@
 			<td align="center"><?php if ($row->perio_id!=10) {echo $row->period.'/'.$row->year; }?></td>
 			<?php if (!$row->capturada): ?>
 				<td align="center"><?php echo anchor('captura/delete/'.$row->token.'/'.$row->empleado_id.'/'.$row->qna_id,' ',$atributo_boton_eliminar);?></td>
+			<?php else: ?>
+				<td></td>
 			<?php endif ?>
 			</tbody>
 		</tr>
