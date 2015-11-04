@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-static-top">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -31,7 +31,7 @@
         </li>    
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-             <i class="fa fa-circle-o-notch fa-3x"></i> <?=$nombre_de_usuario->nombres?> <span class="caret"></span></a>
+             <i class="fa fa-power-off fa-3x"></i> <?=$nombre_de_usuario->nombres?> <span class="caret"></span></a>
           <ul class="dropdown-menu">
            <li><a href="<?=base_url()?>admin"><i class="fa fa-cog fa-spin"></i> Administrador</a></li>
             

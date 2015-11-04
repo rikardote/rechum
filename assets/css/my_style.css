@@ -2,7 +2,10 @@
 @import url('http://fonts.googleapis.com/css?family=Dosis');
 
 footer {  margin: 40px 0; padding-top: 20px; text-align: right; }
+body{
+  padding-top: 100px;
 
+}
 .no-table thead, .no-table td { 
      border-top: none !important; 
  }
