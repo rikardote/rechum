@@ -1,7 +1,7 @@
 
 
 <div class="form-group">
-<?php $atributos = array('id' => 'miFormulario', 'name' => 'miFormulario'); ?>	
+<?php $atributos = array('id' => 'miFormulario', 'name' => 'miFormulario','autocomplete' => 'off'); ?>	
 <?php $atribs_ads = array('id' => 'adscripcion','name' => 'nombre','class' => 'form-control'); ?>	
 <?php $atribs_des = array('id' => 'descripcion','name' => 'descripcion','class' => 'form-control'); ?>	
 

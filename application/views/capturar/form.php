@@ -16,7 +16,7 @@
 <?php $empleado_completo = nombre_completo($empleado->nombres,$empleado->apellido_pat,$empleado->apellido_mat);?>
 
 
-<?php $atributos = array('id' => 'miFormulario', 'name' => 'miFormulario'); ?>
+<?php $atributos = array('id' => 'miFormulario', 'autocomplete' => 'off', 'name' => 'miFormulario'); ?>
 <?php $atribs_fechainicial = array('id' => 'fecha_inicial', 'class' => 'form-control'); ?>
 	
 	<?php 	echo form_open('captura/add',$atributos); ?>

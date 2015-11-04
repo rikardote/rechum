@@ -1,6 +1,6 @@
 <div class="col-md-6">
-	<?php $nuevo_boton = array('class' => 'glyphicon glyphicon-plus'); ?>
-		<?php echo anchor('admin/register', ' ',$nuevo_boton); ?>
+	
+		<?php echo anchor('admin/register', ' <i class="fa fa-user-plus fa-3x"></i>'); ?>
 	</div>
  <table class="table">
  	<tr>
