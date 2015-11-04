@@ -166,8 +166,8 @@ class Reportes extends My_Controller {
 	    $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
 	    $data['is_admin']   = $this->tank_auth->is_admin();
 
-		$fecha_inicial = fecha_ymd($this->input->post('fecha_inicial'));
-		$fecha_final = fecha_ymd($this->input->post('fecha_final'));
+		$fecha_inicial = $this->input->post('fecha_inicial');
+		$fecha_final = $this->input->post('fecha_final');
 		
 		
 	    $data['sin_derecho'] = $this->reporte_model->get_sin_derecho($fecha_inicial, $fecha_final);

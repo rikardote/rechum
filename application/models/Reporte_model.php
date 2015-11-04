@@ -87,6 +87,7 @@ class Reporte_model extends My_Model {
         $this->db->join('empleados', 'empleados.id = captura_incidencias.empleado_id');
         $this->db->join('incidencias', 'incidencias.id = captura_incidencias.incidencia_id');
         $this->db->join('periodos', 'periodos.id = captura_incidencias.periodo_id');
+        $this->db->where('fecha_inicial BETWEEN "'. date('Y-m-d', strtotime($fecha_inicial)). '" and "'. date('Y-m-d', strtotime($fecha_final)).'"');
         $this->db->where('incidencias.incidencia_cod =', 01);
         $this->db->or_where('incidencias.incidencia_cod =', 02);
         $this->db->or_where('incidencias.incidencia_cod =', 03);
@@ -102,7 +103,7 @@ class Reporte_model extends My_Model {
         $this->db->or_where('incidencias.incidencia_cod =', 53);
         $this->db->or_where('incidencias.incidencia_cod =', 54);
         $this->db->or_where('incidencias.incidencia_cod =', 55);
-        $this->db->where('fecha_inicial BETWEEN "'. date('Y-m-d', strtotime($fecha_inicial)). '" and "'. date('Y-m-d', strtotime($fecha_final)).'"');
+        
         $this->db->group_by('token');
         $this->db->order_by('incidencia_cod', 'ASC');
        
