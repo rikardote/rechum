@@ -24,6 +24,8 @@ class Admin_model extends My_Model {
 
             $this->db->from($this->table);
             $this->db->join('empleados', 'username = empleados.num_empleado');
+            $this->db->order_by('is_admin', 'DESC');
+            $this->db->order_by('empleados.num_empleado', 'ASC');
             $query = $this->db->get();
             return $query->result();
      }
