@@ -15,7 +15,9 @@ body{
     background-color: #e1f1fb;
 
 }
-
+.hiddenRow {
+    padding: 0 !important;
+}
 
 .table tbody tr:hover td, .table tbody tr:hover th {
     background-color: #e1f1fb      ;

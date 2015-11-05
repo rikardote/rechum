@@ -110,6 +110,15 @@ if ( ! function_exists('get_total_pendientes2'))
     return $sortedArray;
 
 }
+if ( ! function_exists('get_incidencias_sin_derecho2'))
+{
+    function get_incidencias_sin_derecho2($emp_id,$fecha_inicial,$fecha_final) {
+        $CI = get_instance();
+       
+       $data= $CI->reporte_model->get_incidencias_sin_derecho2($emp_id,$fecha_inicial,$fecha_final);
+        return $data;
+    }
+}
 
 
 

@@ -137,7 +137,41 @@ class Reporte_model extends My_Model {
         $query = $this->db->get();
         return $query->result();
  }
+     public function  get_incidencias_sin_derecho2($emp_id,$fecha_inicial,$fecha_final){
+    
+       $this->db->select("captura_incidencias.*, 
+            
+            empleado_id AS emp_id,
+            count(incidencias.id) AS conteo,
+            incidencias.incidencia_cod,
+            incidencias.grupo,
 
+            adscripciones.id AS adscrip_id,
+            adscripciones.adscripcion,
+            adscripciones.descripcion,
+            
+            empleados.adscripcion_id,
+
+        ");
+
+        $this->db->from('captura_incidencias');
+        $this->db->join('qnas', 'qnas.id = captura_incidencias.qna_id');
+        $this->db->join('empleados', 'empleados.id = captura_incidencias.empleado_id');
+        $this->db->join('incidencias', 'incidencias.id = captura_incidencias.incidencia_id');
+        $this->db->join('adscripciones', 'adscripciones.id = empleados.adscripcion_id');
+        $this->db->select_min('fecha_inicial');
+        //$this->db->where('fecha_inicial BETWEEN "'. date('Y-m-d', strtotime($fecha_inicial)). '" and "'. date('Y-m-d', strtotime($fecha_final)).'"');
+       
+        $this->db->where('empleado_id', $emp_id);
+        $this->db->limit(10);
+        $this->db->order_by('fecha_final','DESC');
+        $this->db->group_by('token');
+        
+        $query = $this->db->get();
+        return $query->result();
+      
+ }
+//$this->db->where('fecha_inicial BETWEEN "'. $fecha_inicial. '" and "'. $fecha_final.'"');
 	
 
 }
