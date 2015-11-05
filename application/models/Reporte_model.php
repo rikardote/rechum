@@ -163,7 +163,7 @@ class Reporte_model extends My_Model {
         //$this->db->where('fecha_inicial BETWEEN "'. date('Y-m-d', strtotime($fecha_inicial)). '" and "'. date('Y-m-d', strtotime($fecha_final)).'"');
        
         $this->db->where('empleado_id', $emp_id);
-        $this->db->limit(10);
+        $this->db->limit(8);
         $this->db->order_by('fecha_final','DESC');
         $this->db->group_by('token');
         
