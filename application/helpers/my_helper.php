@@ -89,6 +89,29 @@ if ( ! function_exists('get_total_pendientes2'))
         return $data;
     }
 }
+ function PHPArrayObjectSorter($array,$sortBy,$direction='asc')
+{
+    $sortedArray=array();
+    $tmpArray=array();
+    foreach($array as $obj)
+    {
+        $tmpArray[]=$obj->$sortBy;
+    }
+    if($direction=='asc'){
+        asort($tmpArray);
+    }else{
+        arsort($tmpArray);
+    }
+
+    foreach($tmpArray as $k=>$tmp){
+        $sortedArray[]=$array[$k];
+    }
+
+    return $sortedArray;
+
+}
+
+
 
 
 

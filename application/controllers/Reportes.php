@@ -166,19 +166,25 @@ class Reportes extends My_Controller {
 	    $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
 	    $data['is_admin']   = $this->tank_auth->is_admin();
 
-		$fecha_inicial = $this->input->post('fecha_inicial');
-		$fecha_final = $this->input->post('fecha_final');
+		$fecha_inicial  = fecha_ymd($this->input->post('fecha_inicial'));
+        $fecha_final  = fecha_ymd($this->input->post('fecha_final'));
+		$centros = explode(",",$this->tank_auth->get_user_centros());
 		
+		$array = "40,41,46,47,53,54,55";
+		$inc = explode(",",$array);
+		$sin_derecho_lic = $this->reporte_model->get_sin_derecho($fecha_inicial, $fecha_final,$inc,$centros);
 		
-	    $data['sin_derecho'] = $this->reporte_model->get_sin_derecho($fecha_inicial, $fecha_final);
+		$array = "01,02,03,04,08,09,10,18,19,25,79";
+		$data['inc'] = explode(",",$array);
+		$sin_derecho_inc = $this->reporte_model->get_sin_derecho_inc($fecha_inicial, $fecha_final,$data['inc'],$centros);		
 		
-
-		
-
-	    $data['panelheading'] = "Reporte Sin derecho a nota buena por desempeno";
+		$obj_merged = array_merge($sin_derecho_lic, $sin_derecho_inc);
+		$data['sortedObjectArray'] = PHPArrayObjectSorter($obj_merged,'num_empleado','asc');
+	    $data['panelheading'] = "Reporte Sin derecho a nota buena por desempeno del: ".fecha_dma($fecha_inicial).' Al '.fecha_dma($fecha_final);
 	    $data['index'] = 'reportes/reporte_sin_derecho';
 		$this->load->view('layouts/index', $data);	
 	}
+
 	public function search(){
     	$data['user_id']    = $this->tank_auth->get_user_id();
         $this->load->model('empleado_model');

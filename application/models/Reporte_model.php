@@ -73,13 +73,20 @@ class Reporte_model extends My_Model {
         $query = $this->db->get();
         return $query->result();
  }
- public function get_sin_derecho($fecha_inicial, $fecha_final){
+ public function get_sin_derecho($fecha_inicial, $fecha_final,$inc,$centros){
     
     $this->db->select("captura_incidencias.*, 
             incidencias.id AS inc_id,
+            count(incidencias.incidencia_cod) AS conteo,
             incidencias.incidencia_cod,
             periodos.id AS perio_id, 
-            periodos.period, periodos.year
+            periodos.period, periodos.year,
+            adscripciones.adscripcion,
+            adscripciones.id AS Ads,
+            empleados.num_empleado,
+            empleados.nombres,
+            empleados.apellido_pat,
+            empleados.apellido_mat,
         ");
         
         $this->db->from('captura_incidencias');
@@ -87,31 +94,50 @@ class Reporte_model extends My_Model {
         $this->db->join('empleados', 'empleados.id = captura_incidencias.empleado_id');
         $this->db->join('incidencias', 'incidencias.id = captura_incidencias.incidencia_id');
         $this->db->join('periodos', 'periodos.id = captura_incidencias.periodo_id');
-        $this->db->where('fecha_inicial BETWEEN "'. date('Y-m-d', strtotime($fecha_inicial)). '" and "'. date('Y-m-d', strtotime($fecha_final)).'"');
-        $this->db->where('incidencias.incidencia_cod =', 01);
-        $this->db->or_where('incidencias.incidencia_cod =', 02);
-        $this->db->or_where('incidencias.incidencia_cod =', 03);
-        $this->db->or_where('incidencias.incidencia_cod =', 04);
-        $this->db->or_where('incidencias.incidencia_cod =', 08);
-        $this->db->or_where('incidencias.incidencia_cod =', 10);
-        $this->db->or_where('incidencias.incidencia_cod =', 18);
-        $this->db->or_where('incidencias.incidencia_cod =', 19);
-        $this->db->or_where('incidencias.incidencia_cod =', 41);
-        $this->db->or_where('incidencias.incidencia_cod =', 40);
-        $this->db->or_where('incidencias.incidencia_cod =', 46);
-        $this->db->or_where('incidencias.incidencia_cod =', 47);
-        $this->db->or_where('incidencias.incidencia_cod =', 53);
-        $this->db->or_where('incidencias.incidencia_cod =', 54);
-        $this->db->or_where('incidencias.incidencia_cod =', 55);
+        $this->db->join('adscripciones', 'adscripcion_id = adscripciones.id');
+        $this->db->where_in('adscripciones.id',$centros);
+        $this->db->where_in('incidencias.incidencia_cod',$inc);
+        $this->db->where('fecha_inicial BETWEEN "'. $fecha_inicial. '" and "'. $fecha_final.'"');
         
-        $this->db->group_by('token');
-        $this->db->order_by('incidencia_cod', 'ASC');
-       
-        
+        $this->db->group_by('num_empleado');
+      
         
         $query = $this->db->get();
         return $query->result();
  }
+ public function get_sin_derecho_inc($fecha_inicial, $fecha_final,$inc,$centros){
+    
+    $this->db->select("captura_incidencias.*, 
+            incidencias.id AS inc_id,
+            incidencias.incidencia_cod AS conteo,
+            incidencias.incidencia_cod,
+            periodos.id AS perio_id, 
+            periodos.period, periodos.year,
+            adscripciones.adscripcion,
+            adscripciones.id AS Ads,
+            empleados.num_empleado,
+            empleados.nombres,
+            empleados.apellido_pat,
+            empleados.apellido_mat,
+
+        ");
+        
+        $this->db->from('captura_incidencias');
+        $this->db->join('qnas', 'qnas.id = captura_incidencias.qna_id');
+        $this->db->join('empleados', 'empleados.id = captura_incidencias.empleado_id');
+        $this->db->join('incidencias', 'incidencias.id = captura_incidencias.incidencia_id');
+        $this->db->join('periodos', 'periodos.id = captura_incidencias.periodo_id');
+        $this->db->join('adscripciones', 'adscripcion_id = adscripciones.id');
+        $this->db->where_in('adscripciones.id',$centros);
+        $this->db->where_in('incidencias.incidencia_cod',$inc);
+        $this->db->where('fecha_inicial BETWEEN "'. $fecha_inicial. '" and "'. $fecha_final.'"');
+                
+        $this->db->group_by('num_empleado');
+
+        $query = $this->db->get();
+        return $query->result();
+ }
+
 	
 
 }
