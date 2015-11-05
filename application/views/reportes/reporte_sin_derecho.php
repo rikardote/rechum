@@ -7,7 +7,7 @@
 	</tr>
 	<tr>
 <?php foreach ($sortedObjectArray as $empleado): ?>
-		<?php if ($empleado->conteo > 3 || in_array($empleado->incidencia_cod, $inc)):	?>
+		<?php if ($empleado->conteo > 3 xor in_array($empleado->incidencia_cod, $inc)):	?>
 			<td><?=$empleado->num_empleado;?></td>	
 			<td><?=nombre_completo($empleado->nombres,$empleado->apellido_pat,$empleado->apellido_mat)?></td>
 		<?php endif ?>
