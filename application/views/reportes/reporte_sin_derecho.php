@@ -19,32 +19,45 @@
 			<?php endif ?>
 			
         </tr>
+      
         <tr >
+
             <td colspan="6" class="hiddenRow">
             	<div class="accordian-body collapse" id="<?=$empleado->id?>"> 
             		<table class="table">
+                       <thead>
             			<tr>
 	            			<th>Codigo</th>
 	            		   	<th>Fecha Inicial</th>
                             <th>Fecha Final</th>
                             <th>Total</th>
             			</tr>
-            			
+            			</thead>
             			<?php $incidencias = get_incidencias_sin_derecho2($empleado->empleado_id,$empleado->fecha_inicial,$empleado->fecha_final) ?>
-            			
+            			 
             				<?php foreach ($incidencias as $incidencia): ?>
-                            <tr>
-            				<td><?php echo $incidencia->incidencia_cod;?></td>
-                            <td><?php echo fecha_dma($incidencia->fecha_inicial);?></td>
-                            <td><?php echo fecha_dma($incidencia->fecha_final);?></td>
-                            <td><?php echo $incidencia->conteo;?></td>
-            		      </tr>		
+                            
+                            <tr class="alert alert-warning">
+                       
+                          
+                                <?php if (in_array($incidencia->incidencia_cod, $inc2)): ?>
+                                    <td><?php echo $incidencia->incidencia_cod;?></td>    
+                                               				
+                                <td><?php echo fecha_dma($incidencia->fecha_inicial);?></td>
+                                <td><?php echo fecha_dma($incidencia->fecha_final);?></td>
+                                <td><?php echo $incidencia->conteo;?></td>
+                                <?php endif ?>
+            		    
+                          </tr>	
+                         
+                            
             				<?php endforeach ?>
-            		
+                        </tbody>   
             		</table>
             	</div> 
             </td>
         </tr>
+         
         <?php endforeach ?>
        
     </tbody>

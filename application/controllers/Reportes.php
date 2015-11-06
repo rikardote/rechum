@@ -169,6 +169,8 @@ class Reportes extends My_Controller {
 		$fecha_inicial  = fecha_ymd($this->input->post('fecha_inicial'));
         $fecha_final  = fecha_ymd($this->input->post('fecha_final'));
 		$centros = explode(",",$this->tank_auth->get_user_centros());
+		$array = "01,02,03,04,08,09,10,18,19,25,40,41,46,47,53,54,55,79";
+		$data['inc2'] = explode(",",$array);
 		
 		$array = "40,41,46,47,53,54,55";
 		$inc = explode(",",$array);
