@@ -1,5 +1,5 @@
 
-<table width="100%" border="0" cellpadding="0" cellspacing="1" bordercolor="#000000" style="border-collapse:collapse;">
+<table width="100%" border="0px" cellpadding="0" cellspacing="0" bordercolor="#000000" style="border-collapse:collapse;">
     <thead>
         <tr>
             <th>Num Empleado</th>
@@ -14,17 +14,16 @@
 		   <?php if ($empleado->conteo > 3 xor in_array($empleado->incidencia_cod, $inc)):	?>
 		   <td><?=$empleado->num_empleado;?></td>	
 		   <td><?=nombre_completo($empleado->nombres,$empleado->apellido_pat,$empleado->apellido_mat)?></td>
-		</tr>	
-	</tbody>
+		</tr> 
 			<?php endif ?>
-			
-        </tr>
-      
+		
+    </tbody>	
+              
         <tr >
 
             <td colspan="6" class="hiddenRow">
             	<div class="accordian-body collapse" id="<?=$empleado->id?>"> 
-            		<table class="table">
+            		<table class="table table-condensed ">
                        <thead>
             			<tr>
 	            			<th>Codigo</th>
@@ -46,9 +45,10 @@
                                 <td><?php echo fecha_dma($incidencia->fecha_inicial);?></td>
                                 <td><?php echo fecha_dma($incidencia->fecha_final);?></td>
                                 <td><?php echo $incidencia->conteo;?></td>
+                          </tr> 
                                 <?php endif ?>
             		    
-                          </tr>	
+                         
                          
                             
             				<?php endforeach ?>
