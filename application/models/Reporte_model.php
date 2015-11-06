@@ -87,6 +87,7 @@ class Reporte_model extends My_Model {
             empleados.nombres,
             empleados.apellido_pat,
             empleados.apellido_mat,
+            empleados.condicion,
         ");
         
         $this->db->from('captura_incidencias');
@@ -96,11 +97,12 @@ class Reporte_model extends My_Model {
         $this->db->join('periodos', 'periodos.id = captura_incidencias.periodo_id');
         $this->db->join('adscripciones', 'adscripcion_id = adscripciones.id');
         $this->db->where_in('adscripciones.id',$centros);
+        $this->db->where('empleados.condicion','B');       
         $this->db->where_in('incidencias.incidencia_cod',$inc);
         $this->db->where('fecha_inicial BETWEEN "'. $fecha_inicial. '" and "'. $fecha_final.'"');
         
         $this->db->group_by('num_empleado');
-      
+       
         
         $query = $this->db->get();
         return $query->result();
@@ -119,6 +121,7 @@ class Reporte_model extends My_Model {
             empleados.nombres,
             empleados.apellido_pat,
             empleados.apellido_mat,
+            empleados.condicion,
 
         ");
         
@@ -129,9 +132,10 @@ class Reporte_model extends My_Model {
         $this->db->join('periodos', 'periodos.id = captura_incidencias.periodo_id');
         $this->db->join('adscripciones', 'adscripcion_id = adscripciones.id');
         $this->db->where_in('adscripciones.id',$centros);
+        $this->db->where('empleados.condicion','B');               
         $this->db->where_in('incidencias.incidencia_cod',$inc);
         $this->db->where('fecha_inicial BETWEEN "'. $fecha_inicial. '" and "'. $fecha_final.'"');
-                
+        
         $this->db->group_by('num_empleado');
 
         $query = $this->db->get();
@@ -151,6 +155,7 @@ class Reporte_model extends My_Model {
             adscripciones.descripcion,
             
             empleados.adscripcion_id,
+            
 
         ");
 
@@ -161,7 +166,7 @@ class Reporte_model extends My_Model {
         $this->db->join('adscripciones', 'adscripciones.id = empleados.adscripcion_id');
         $this->db->select_min('fecha_inicial');
         //$this->db->where('fecha_inicial BETWEEN "'. date('Y-m-d', strtotime($fecha_inicial)). '" and "'. date('Y-m-d', strtotime($fecha_final)).'"');
-       
+        
         $this->db->where('empleado_id', $emp_id);
         $this->db->limit(6);
         $this->db->order_by('fecha_final','DESC');
