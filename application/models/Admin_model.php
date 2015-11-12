@@ -19,11 +19,14 @@ class Admin_model extends My_Model {
                     users.activated, 
                     users.is_admin, 
                     users.centros,
-                    users.id
+                    users.id,
+                    adscripciones.id AS ads_id, 
+                    adscripciones.descripcion
                ");
 
             $this->db->from($this->table);
             $this->db->join('empleados', 'username = empleados.num_empleado');
+            $this->db->join('adscripciones', 'adscripcion_id = adscripciones.id');
             $this->db->order_by('is_admin', 'DESC');
             $this->db->order_by('empleados.num_empleado', 'ASC');
             $query = $this->db->get();

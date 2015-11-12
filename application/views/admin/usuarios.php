@@ -19,8 +19,12 @@
  	<tr>
 
  		<?php foreach ($users as $user): ?>
- 			<td><?= $user->num_empleado;?></td>
- 			<td><?php echo nombre_completo($user->nombres, $user->apellido_pat,$user->apellido_mat);?></td>
+ 			<td><?= '<strong>'.$user->num_empleado.'</strong>';?></td>
+ 			<td><?php echo '<strong>'.nombre_completo($user->nombres, $user->apellido_pat,$user->apellido_mat).'</strong>';?>
+				<br><?php echo '<small><i>'.$user->descripcion.'</i></small>'; ?>
+ 			</td>
+ 			
+
  			<?php
 				if($user->activated) {
 					$atributo_boton_activate = array('class' => 'btn btn-success btn-sm glyphicon glyphicon-off'); 
