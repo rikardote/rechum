@@ -21,7 +21,7 @@
  		<?php foreach ($users as $user): ?>
  			<td><?= '<strong>'.$user->num_empleado.'</strong>';?></td>
  			<td><?php echo '<strong>'.nombre_completo($user->nombres, $user->apellido_pat,$user->apellido_mat).'</strong>';?>
-				<br><?php echo '<small><i>'.$user->descripcion.'</i></small>'; ?>
+				<br><?php echo '<div class="label label-info "><small><i>'.$user->descripcion.'</i></small></div>'; ?>
  			</td>
  			
 
