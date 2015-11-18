@@ -120,6 +120,15 @@ if ( ! function_exists('get_incidencias_sin_derecho2'))
     }
 }
 
+if ( ! function_exists('get_usuario_centros'))
+{
+    function get_usuario_centros($emp_id) {
+        $CI = get_instance();
+       
+       $data= $CI->admin_model->get_usuario_centros($emp_id);
+        return $data;
+    }
+}
 
 
 

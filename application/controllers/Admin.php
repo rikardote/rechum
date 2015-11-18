@@ -52,6 +52,8 @@ class Admin extends admin_base {
        $data['nombre_de_usuario'] = $this->empleado_model->getName($username);
       if ($this->uri->segment(3) != '') {
         $data['user_id'] = $this->uri->segment(3);
+        $data['center'] = get_usuario_centros($data['user_id']);
+
       }
       
       $data['centros'] = $this->adscripcion_model->get_all();

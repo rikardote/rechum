@@ -644,7 +644,7 @@ class Tank_auth
 	function is_admin() {
     	return $this->is_logged_in() && $this->ci->session->userdata('is_admin') === TRUE;
 	}
-		function get_user_centros()
+	function get_user_centros()
 	{
 		return $this->ci->session->userdata('centros');
 	}

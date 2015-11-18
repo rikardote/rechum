@@ -32,7 +32,18 @@ class Admin_model extends My_Model {
             $query = $this->db->get();
             return $query->result();
      }
-     
+       public function get_usuario_centros($empl_id){
+            $this->db->select("users.centros");
+
+            $this->db->from($this->table);
+          
+            $this->db->where('users.id', $empl_id);
+            
+
+            $query = $this->db->get();
+            return $query->row_array();         
+          
+     } 
 
 
 
