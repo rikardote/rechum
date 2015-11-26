@@ -22,6 +22,10 @@ class Empleados extends MY_Controller {
 		$data['is_admin']   = $this->tank_auth->is_admin();
 		$data['panelheading'] = "Empleados";
 		$data['options'] = listData('adscripciones','id','adscripcion' ,'descripcion','ASC',' - ');
+		$this->load->model('puesto_model');
+        $this->load->model('horario_model');
+		$data['horarios'] = $this->horario_model->as_dropdown('horario')->order_by('horario', 'ASC')->get_all();
+		$data['puestos'] = $this->puesto_model->as_dropdown('puesto')->get_all();
 		$data['index'] = "empleados/index";
 		$this->load->view('layouts/index', $data);
 		
@@ -44,6 +48,12 @@ class Empleados extends MY_Controller {
 		$data['empleado'] = $this->empleado_model->get_empleado_join($id);
 		$data['options'] = listData('adscripciones','id','adscripcion' ,'descripcion','ASC',' - ');
 		$data['index'] = "empleados/show";
+
+
+		$this->load->model('puesto_model');
+        $this->load->model('horario_model');
+		$data['horarios'] = $this->horario_model->as_dropdown('horario')->order_by('horario', 'ASC')->get_all();
+		$data['puestos'] = $this->puesto_model->as_dropdown('puesto')->get_all();
 		$data['panelheading'] = "Empleados";
 			
 		$this->load->view('layouts/index', $data);
@@ -75,6 +85,10 @@ class Empleados extends MY_Controller {
 			$apellido_mat 	= strtoupper($this->input->post('apellido_mat'));
 			$adscripcion_id = $this->input->post('adscripcion_id');
 			$activo 		= 1;//$this->input->post('activo');
+			$horario_id 	= $this->input->post('horario_id');
+			$puesto_id 		= $this->input->post('puesto_id');
+			$adscripcion_id = $this->input->post('adscripcion_id');
+		
 
 			$this->empleado_model->insert(array(
 				'num_empleado' => $num_empleado,
@@ -82,9 +96,13 @@ class Empleados extends MY_Controller {
 				'apellido_pat' => $apellido_pat,
 				'apellido_mat' => $apellido_mat,
 				'adscripcion_id' => $adscripcion_id,
+				'horario_id' => $horario_id,
+				'puesto_id' => $puesto_id,
+				'num_seguro' => $num_seguro,
+				'num_plaza' => $num_plaza,
 				'activo' => $activo
-				
 			));
+	
 
 			$insert_id = $this->db->insert_id();
 
@@ -94,10 +112,6 @@ class Empleados extends MY_Controller {
 				
 			}
 		
-			
-			
-   			
-			
 
 		}
 

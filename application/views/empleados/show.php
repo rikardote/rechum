@@ -91,7 +91,7 @@
 <!-- Small modal -->
 
 
-<div id="mymodal"class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+<div id="mymodal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-lg">
     <div class="modal-content col-xs-12" >
       <?php $this->load->view('empleados/form'); ?>

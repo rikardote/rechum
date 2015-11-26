@@ -1,6 +1,6 @@
 <?php if ($is_admin==1): ?>
 	<div class="col-xs-4">
-		<p><button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-sm">
+		<p><button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">
 			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 			</button>
 		</p>
