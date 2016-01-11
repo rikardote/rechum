@@ -12,13 +12,8 @@
 <link rel="stylesheet" href="<?php echo site_url();?>assets/css/bsclassmaker-linkedin.css">
 <link rel="stylesheet" href="<?php echo site_url();?>assets/css/buttons.css">
 <link rel="stylesheet" href="<?php echo site_url();?>assets/css/font-awesome.min.css">
+<link rel="stylesheet" href="<?php echo site_url();?>assets/chosen/chosen.css">
 
-
-<script src="<?php echo site_url();?>assets/js/jquery-1.11.3.min.js"></script>
-<script src="<?php echo site_url();?>assets/js/jquery-ui.js"></script>
-<script src="<?php echo site_url();?>assets/js/ui.datepicker-es-MX.js"></script>
-<script src="<?php echo site_url();?>assets/js/bootstrap.min.js"></script>
-<script src="<?php echo site_url();?>assets/js/jquery.form.js"></script>
 
 
 
@@ -80,5 +75,17 @@ function checkTime(i) {
 
 </body>
 
+<script src="<?php echo site_url();?>assets/js/jquery-1.11.3.min.js"></script>
+<script src="<?php echo site_url();?>assets/js/jquery-ui.js"></script>
+<script src="<?php echo site_url();?>assets/js/ui.datepicker-es-MX.js"></script>
+<script src="<?php echo site_url();?>assets/js/bootstrap.min.js"></script>
+<script src="<?php echo site_url();?>assets/js/jquery.form.js"></script>
+<script src="<?php echo site_url();?>assets/chosen/chosen.jquery.js"></script>
+<script>
+  $('.chosen-centro').chosen({
+    placeholder_text_multiple: 'Seleccione los centros',
+    max_selected_options: 3
+  });
+</script>
 
 </html>

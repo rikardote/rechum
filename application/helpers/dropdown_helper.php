@@ -4,7 +4,7 @@
       $items = array();
       $CI =& get_instance();
       if($orderBy) {
-          $CI->db->order_by($value,$orderBy);
+          $CI->db->order_by($value2,$orderBy)->order_by($value,$orderBy);
       }
       $query = $CI->db->select("$name,$value,$value2")->from($table)->get();
       if ($query->num_rows() > 0) {

@@ -16,7 +16,7 @@
 				<td><?php echo $centro->adscripcion;?></td>
 				<td><?php echo $centro->descripcion;?></td>
 			
-				
+				 
 				
 				<td align="center">
 					<?php echo form_open('reportes/show'); ?>
@@ -37,4 +37,5 @@
 		
 
 </table>	
+
 

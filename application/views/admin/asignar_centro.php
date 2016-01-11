@@ -1,8 +1,10 @@
+
+
 <p>Seleccione un centro, o varios presionando la tecla "CTRL" </p>
 
 <?php echo form_open('admin/agregar_centro_a_usuario'); ?>
 	
-	<select size="30" class="form-control" name="listbox1[]"  multiple>"
+	<select size="30" class="form-control chosen-centro" name="listbox1[]"  multiple>"
 
 	<?php foreach ($centros as $centro): ?>
 	
@@ -15,4 +17,4 @@
 	
 <?php echo form_close(); ?>
 
-<pre><?php var_dump($center); ?></pre>
+
